@@ -259,7 +259,7 @@ function add_allowed_words(message) {
             // check if word == codeword
             if (word == codeword) {
                 // win
-                add_message('<b class="warning">You won after '+messages.length+' messages!</b><br>Click the restart buttom in the top right to play again!", "system');
+                add_message('<b class="warning">You won after '+messages.length+' messages!</b><br>Click the restart buttom in the top right to play again!', "system");
             }
 
         }
