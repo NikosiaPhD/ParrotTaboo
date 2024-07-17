@@ -9,7 +9,7 @@
 4. [Maintainance and Licensing](#maintainance-and-licensing)
 
 ## How to Play
-You don't need to install the game or any dependencies. You can play it [here!](http://nikosiaphd.github.io/parrottaboo)
+You don't need to install the game or any dependencies. You can play it [here!](http://nikosiaphd.github.io/ParrotTaboo)
 
 1. **Goal**: Your objective is to make the AI say a specific code word displayed at the top of the screen.
 
