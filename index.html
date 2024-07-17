@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrot Taboo</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦜</text></svg>">
+    <!-- Unicode as favicon reference: https://x.com/LeaVerou/status/1241619866475474946 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-content">
+            <div id="word-list-container">
+                <h2>Available Words</h2>
+                <div id="word-list">
+                    <!-- Words will be dynamically added here -->
+                </div>
+            </div>
+            <div id="game-area">
+                <h1>Parrot Taboo</h1>
+                <div id="task-area">
+                    <button class = "custom-button" id="settings-button" onclick="open_settings()"></button>
+                    <h3 id="task"><<< Set your settings first</h3>
+                    <button class = "custom-button" id="reset-button" onclick="reset_game()"></button>
+                </div>
+                <div id="chat-window">
+                    <div class="message system">
+                        <b class="warning">Welcome to Parrot Taboo!</b><br>
+                        Before you start the game, go through the settings. Otherwise the game will not work!
+                    </div>
+                    <!-- Messages will be dynamically added here -->
+                </div>
+                <small id ="input-hint">You can only use words that the AI has used.</small>
+                <div id="input-area">
+                    <div id="highlight_colors"></div>
+                    <div id="highlight_editable" contenteditable></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settingssettings-panel" class="settings-panel">
+        <div class="settings-panel-content">
+            <span class="close">&times;</span>
+            <div class="instructions">
+                <h2>How to Play</h3>
+                <p>You are chatting with an AI and your goal is to make it say the code word that is shown at the top. The twist is that you can only send messages composed of words that the AI has previously used. All other words will be highlighted in red and will prevent you from sending that message. You can see the legal words in the left section.</p>
+                <p>Before you can start the game, you need to set your API key. If you haven't already, look up how to get an API key from OpenAI or Groq, and then select a model from that provider.</p>
+                <p>You can also modify the generation settings. A shorter response length will make the game more challenging. A temperature above 1 can lead to incoherent responses.</p>
+            </div>
+            <h2>Game Settings</h2>
+            <div class="settings-form">
+
+                <label for="modelName">Model:</label>
+                <select id="model-selector" name="modelName">
+                    <option value = "" default>Select a model</option>
+                    <option value="OpenAI gpt-4o">OpenAI GPT-4o</option>
+                    <option value="OpenAI gpt-3.5-turbo">OpenAI GPT-3.5</option>
+                    <option value="Groq llama3-8b-8192">Groq Llama3-8b</option>
+                    <option value="Groq llama3-70b-8192">Groq Llama3-70b</option>
+                    <option value="Groq mixtral-8x7b-32768">Groq Mixtral-8x7b</option>
+                    <option value="Groq gemma-7b-it">Groq Gemma-7b</option>
+                    <option value="Groq gemma2-9b-it">Groq Gemma2-9b</option>
+                </select>
+
+                <label for="apiKey" id="api-key-label">API Key:</label>
+                <input type="password" id="api-key" name="apiKey" required>
+
+                <div class ="settings-slider">
+                    <label for="responseLength" id="response-length-label">Response Length: 50</label>
+                    <input type="range" id="response-length" name="responseLength" min="20" max="200" value="100">
+                </div>
+
+                <div class ="settings-slider">
+                    <label for="generationTemperature" id="generation-temperature-label">Temperature: 1.0</label>
+                    <input type="range" id="generation-temperature" name="generationTemperature" min="0.0" max="1.5" step="0.01" value="1.0">
+                </div>
+                <small>
+                    Settings save automatically
+                </small>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

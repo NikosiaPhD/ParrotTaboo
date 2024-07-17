@@ -1,0 +1,327 @@
+:root {
+    --primary-color: #ff4500;
+    --darkest-dark: #1a1a1a;
+    --medium-dark: #333333;
+    --light-dark: #888888;
+    --darkest-dark: #1a1a1a;
+    --text-color: #ffffff;
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--darkest-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+
+#word-list-container {
+    flex: 1;
+    background-color: var(--medium-dark);
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 2px solid var(--light-dark);
+    border-left: 2px solid var(--light-dark);
+
+}
+
+#word-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    max-height: 90vh;
+    scrollbar-width: none;
+}
+
+
+#word-list-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.word {
+    background-color: #ffffff22;
+    padding: 0 5px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 1.6em;
+    font-size: .7em;
+}
+
+#game-area {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 2px solid var(--light-dark);
+}
+
+h1 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+#task-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    border-top: 2px solid var(--primary-color);
+}
+
+#task {
+    flex-grow: 1;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.custom-button{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.custom-button:hover {
+    transform: scale(1.1);
+}
+
+#reset-button::after {
+    content: "↻";
+    font-size: 24px;
+}
+
+#settings-button::after {
+    content: "⚙";
+    font-size: 24px;
+}
+
+
+
+#chat-window {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: var(--darkest-dark);
+    padding: 20px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: 60vh;
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+.message.user {
+    background-color: var(--medium-dark);
+    margin-left: 15%;
+}
+
+.message.assistant {
+    background-color: #ffffff44;
+    margin-right: 15%;
+}
+
+.message.system {
+    background-color: var(--medium-dark);
+    border: 2px solid var(--primary-color);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+#input-area {
+    display: flex;
+    margin-bottom: 20px;
+
+    border: 2px solid var(--primary-color);
+    position: relative;
+    overflow: auto;
+    height: 5rem;
+    background-color: var(--medium-dark);
+    border-radius: var(--border-radius);
+    width: 100%;
+    color: var(--text-color);
+
+}
+
+#highlight_colors,
+#highlight_editable {
+    padding: 1rem;
+    min-height: calc(100% - 2rem);
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    width: 100%;
+}
+
+#highlight_colors {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    user-select: none;
+    color: var(--text-color);
+}
+
+#highlight_editable {
+    position: relative;
+    color: transparent;
+    caret-color: var(--text-color);
+    background-color: transparent;
+}
+
+#highlight_editable:focus {
+    outline: none;
+}
+
+.highlighted_word {
+    background-color: #ff2222;
+    border-radius: 5px;
+}
+
+#input-hint{
+    text-align: center;
+    font-size: .9em;
+    color: var(--light-dark);    
+}
+
+.warning {
+    color: var(--primary-color)!important;
+}
+
+.instructions {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--light-dark);
+}
+
+
+/* styles for the settings panel */
+
+.settings-panel {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000000aa;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.settings-panel-content {
+    background-color: var(--darkest-dark);
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    width: 80%;
+    max-width: 500px;
+    border-radius: var(--border-radius);
+}
+
+.close {
+    color: var(--primary-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.settings-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.settings-form input,
+.settings-form select {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    background-color: var(--medium-dark);
+    color: var(--text-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+}
+
+.settings-form button {
+    margin: 20px auto 0 auto;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.settings-slider {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.settings-slider input {
+    width: 50%;
+}
+
+.settings-form small {
+    color: var(--primary-color);
+    display: block;
+    text-align: center;
+}
+
+.instructions p{
+    margin-bottom: 10px;
+    font-size:.9em
+}
